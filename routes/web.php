@@ -51,3 +51,9 @@ Route::get('/api/customers/{customer}/orders', [OrderController::class, 'getCust
 Route::get('/api/orders/{order}/details', [OrderController::class, 'getOrderDetails'])->name('orders.details');
 
 
+Route::get('/ordered-products', [App\Http\Controllers\ProductOrderController::class, 'index'])->name('ordered.products');
+Route::get('/same-products-customers', [App\Http\Controllers\CustomerController::class, 'sameProductsCustomers'])->name('same.products.customers');
+Route::get('products/orders-count', [\App\Http\Controllers\ProductController::class, 'ordersCount'])->name('products.orders_count');
+Route::get('/products-more-than-6-orders', [App\Http\Controllers\ProductController::class, 'productsMoreThan6Orders'])->name('products.more_than_6_orders');
+Route::get('/order-totals', [App\Http\Controllers\OrderController::class, 'orderTotals'])->name('orders.totals');
+Route::get('/orders-greater-than-60', [OrderController::class, 'ordersGreaterThanOrder60'])->name('orders.greater_than_60');

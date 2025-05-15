@@ -96,6 +96,36 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="flex-shrink-0">
+                            <div class="bg-dark bg-opacity-10 p-3 rounded">
+                                <i class='bx bx-chart text-dark fs-4'></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="card-title mb-0">Stats</h5>
+                            <p class="text-muted small mb-0">View stats</p>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a href="{{ route('ordered.products') }}"  class="btn btn-outline-dark">View Ordered Products </a>
+                            <a href="{{ route('same.products.customers') }} " class="btn btn-outline-dark" >Customers Who Ordered the Same
+                                Products as Annabel Stehr</a>
+                            <a href="{{ route('products.orders_count') }}" class="btn btn-outline-dark">Show Number of Orders per Product</a>
+                            <a href="{{ route('products.more_than_6_orders') }}" class="btn btn-outline-dark">Products with More Than 6
+                                Orders</a>
+                            <a href="{{ route('orders.totals') }}" class="btn btn-outline-dark">Show Total Amount per Order</a>
+                            <a href="{{ route('orders.greater_than_60') }}" class="btn btn-outline-dark">Orders with Total Greater Than
+                                Order 60</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
     </div>
 </div>
 @endsection

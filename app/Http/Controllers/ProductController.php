@@ -102,4 +102,26 @@ class ProductController extends Controller
 
         return response()->json(['success' => true]);
     }
+    
+    public function ordersCount()
+    {
+        $products = Product::select('products.name')
+            ->leftJoin('product_orders', 'products.id', '=', 'product_orders.product_id')
+            ->groupBy('products.id', 'products.name')
+            ->selectRaw('products.name, COUNT(product_orders.order_id) as orders_count')
+            ->get();
+        return view('products.orders_count', compact('products'));
+    }
+
+    
+    public function productsMoreThan6Orders()
+    {
+        $products = Product::select('products.id', 'products.name')
+            ->leftJoin('product_orders', 'products.id', '=', 'product_orders.product_id')
+            ->groupBy('products.id', 'products.name')
+            ->selectRaw('products.name, COUNT(product_orders.order_id) as orders_count')
+            ->havingRaw('COUNT(product_orders.order_id) > 6')
+            ->get();
+        return view('products.products_more_than_6_orders', compact('products'));
+    }
 }
