@@ -57,3 +57,11 @@ Route::get('products/orders-count', [\App\Http\Controllers\ProductController::cl
 Route::get('/products-more-than-6-orders', [App\Http\Controllers\ProductController::class, 'productsMoreThan6Orders'])->name('products.more_than_6_orders');
 Route::get('/order-totals', [App\Http\Controllers\OrderController::class, 'orderTotals'])->name('orders.totals');
 Route::get('/orders-greater-than-60', [OrderController::class, 'ordersGreaterThanOrder60'])->name('orders.greater_than_60');
+
+Route::get('/orders-per-name', [OrderController::class, 'ordersPerName'])->name('orders.orders-per-name');
+Route::get('/changeLocale/{locale}', function (string $locale) {
+    if (in_array($locale, ['en', 'es', 'fr', 'ar'])) {
+        session()->put('locale', $locale);
+     }
+    return redirect()->back();
+});

@@ -4,7 +4,7 @@
 <div class="container py-4">
     <div class="row mb-4">
         <div class="col">
-            <h1 class="h2 mb-3">Welcome to Stock Management System</h1>
+            <h1 class="h2 mb-3">@lang("Welcome to Stock Management System")</h1>
             <p class="text-muted mb-4">Manage your inventory, customers, and orders efficiently</p>
         </div>
     </div>
@@ -101,8 +101,8 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center mb-3">
                         <div class="flex-shrink-0">
-                            <div class="bg-dark bg-opacity-10 p-3 rounded">
-                                <i class='bx bx-chart text-dark fs-4'></i>
+                            <div class="bg-danger bg-opacity-10 p-3 rounded">
+                                <i class='bx bx-chart text-danger fs-4'></i>
                             </div>
                         </div>
                         <div class="flex-grow-1 ms-3">
@@ -111,15 +111,16 @@
                         </div>
                     </div>
                     <div class="d-grid gap-2">
-                        <a href="{{ route('ordered.products') }}"  class="btn btn-outline-dark">View Ordered Products </a>
-                            <a href="{{ route('same.products.customers') }} " class="btn btn-outline-dark" >Customers Who Ordered the Same
+                        <a href="{{ route('ordered.products') }}"  class="btn btn-outline-danger">View Ordered Products </a>
+                            <a href="{{ route('same.products.customers') }} " class="btn btn-outline-danger" >Customers Who Ordered the Same
                                 Products as Annabel Stehr</a>
-                            <a href="{{ route('products.orders_count') }}" class="btn btn-outline-dark">Show Number of Orders per Product</a>
-                            <a href="{{ route('products.more_than_6_orders') }}" class="btn btn-outline-dark">Products with More Than 6
+                            <a href="{{ route('products.orders_count') }}" class="btn btn-outline-danger">Show Number of Orders per Product</a>
+                            <a href="{{ route('products.more_than_6_orders') }}" class="btn btn-outline-danger">Products with More Than 6
                                 Orders</a>
-                            <a href="{{ route('orders.totals') }}" class="btn btn-outline-dark">Show Total Amount per Order</a>
-                            <a href="{{ route('orders.greater_than_60') }}" class="btn btn-outline-dark">Orders with Total Greater Than
+                            <a href="{{ route('orders.totals') }}" class="btn btn-outline-danger">Show Total Amount per Order</a>
+                            <a href="{{ route('orders.greater_than_60') }}" class="btn btn-outline-danger">Orders with Total Greater Than
                                 Order 60</a>
+                            <a href="{{ route('orders.orders-per-name') }}" class="btn btn-outline-danger">list of the names of pepole who command </a
                     </div>
                 </div>
             </div>

@@ -77,4 +77,20 @@ class OrderController extends Controller
             ->get();
         return view('orders.order_totals', compact('orders'));
                 }
+
+   public function ordersPerName()
+{
+        $orders = Order::join('customers', 'orders.customer_id', '=', 'customers.id')
+            ->join('product_orders', 'orders.id', '=', 'product_orders.order_id')
+            ->join('products', 'product_orders.product_id', '=', 'products.id')
+            ->select(
+                'orders.id',
+                DB::raw("CONCAT(customers.first_name, ' ', customers.last_name) AS customer_name"),
+                'products.name AS product_name',
+            )
+            ->get();
+
+        return view('orders.names_command', compact('orders'));
+    
+}
 }

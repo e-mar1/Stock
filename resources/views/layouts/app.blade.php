@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" @if (app()->getLocale()=="ar") dir="rtl" @endif>
 
 <head>
     <meta charset="utf-8">
@@ -80,13 +80,40 @@
             padding: 1.5rem 0;
             margin-top: auto;
         }
+        .language-select {
+            background-color: var(--secondary-color); /* blue background */
+            color: white;
+            border: none;
+            font-weight: 500;
+            border-radius: 0.375rem;
+            padding: 0.375rem 0.75rem;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .language-select:hover,
+        .language-select:focus {
+            background-color: var(--secondary-color);
+            color: white;
+            outline: none;
+        }
+        .language-select {
+            background-image: url("data:image/svg+xml,%3Csvg fill='white' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 16px;
+            padding-right: 2rem;
+        }
+
     </style>
 
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{{ route('dashboard') }}">
                 <i class='bx bx-package me-2'></i>StockMS
@@ -116,11 +143,19 @@
                             <i class='bx bx-cart me-1'></i>Orders
                         </a>
                     </li>
+                   
+                    <li class="nav-item d-flex align-items-center ms-3">
+                        <select id="selectLocale" class="language-select">
+                            <option value="ar" @if(app()->getLocale() == 'ar') selected @endif>Ar</option>
+                            <option value="fr" @if(app()->getLocale() == 'fr') selected @endif>Fr</option>
+                            <option value="en" @if(app()->getLocale() == 'en') selected @endif>En</option>
+                            <option value="es" @if(app()->getLocale() == 'es') selected @endif>Es</option>
+                        </select>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-
     <main class="container py-4">
         @yield('content')
     </main>
@@ -147,6 +182,13 @@
             </div>
         </div>
     </footer>
+    <script>
+        $("#selectLocale").on('change',function(){
+            var locale = $(this).val();
+            window.location.href = "/changeLocale/"+locale;
+        })
+    </script>
+
 </body>
 
 </html>
